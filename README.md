@@ -1,3 +1,3 @@
 # Dot-Net-Core
 
-Angular For .Net Core trainning
+Angular For .Net Core trainning.
