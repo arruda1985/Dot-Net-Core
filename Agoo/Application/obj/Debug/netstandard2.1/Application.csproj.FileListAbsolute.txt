@@ -1,0 +1,12 @@
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\bin\Debug\netstandard2.1\Application.deps.json
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\bin\Debug\netstandard2.1\Application.dll
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\bin\Debug\netstandard2.1\Application.pdb
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\bin\Debug\netstandard2.1\Domain.dll
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\bin\Debug\netstandard2.1\Domain.pdb
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\obj\Debug\netstandard2.1\Application.csprojAssemblyReference.cache
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\obj\Debug\netstandard2.1\Application.csproj.CoreCompileInputs.cache
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\obj\Debug\netstandard2.1\Application.AssemblyInfoInputs.cache
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\obj\Debug\netstandard2.1\Application.AssemblyInfo.cs
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\obj\Debug\netstandard2.1\Application.csproj.CopyComplete
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\obj\Debug\netstandard2.1\Application.dll
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Application\obj\Debug\netstandard2.1\Application.pdb

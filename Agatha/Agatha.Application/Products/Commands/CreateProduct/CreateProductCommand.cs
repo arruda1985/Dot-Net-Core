@@ -7,12 +7,14 @@ namespace Agatha.Application.Products.Commands.CreateProduct
 {
     public class CreateProductCommand : IRequest<Guid>
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Categories { get; set; }
         public string Tags { get; set; }
         public decimal Price { get; set; }
         public string SKU { get; set; }
+        public Guid StoreId { get; set; }
         public int Quantity { get; set; }
         public string[] ImagesUploading { get; set; }
 

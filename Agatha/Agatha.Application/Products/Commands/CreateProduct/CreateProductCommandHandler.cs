@@ -14,33 +14,37 @@ namespace Agatha.Application.Products.Commands.CreateProduct
     {
         private readonly AgathaDbContext _context;
         private readonly IAzureService _azureService;
+        private readonly ILocalPhotoFileService _localPhotoService;
 
-        public CreateProductCommandHandler(AgathaDbContext context, IAzureService azureService)
+        public CreateProductCommandHandler(AgathaDbContext context, IAzureService azureService, ILocalPhotoFileService localPhotoService)
         {
             _context = context;
             _azureService = azureService;
+            _localPhotoService = localPhotoService;
         }
 
         public async Task<Guid> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
             var imgs = new List<ProductImage>();
 
-            foreach (var image in request.ImagesUploading)
-            {
-
-                var fileName = await _azureService.UploadImageAsync(new ImageUpload() { Base64Image = image });
-
-                imgs.Add(new ProductImage()
+            if (request.ImagesUploading != null)
+                foreach (var image in request.ImagesUploading)
                 {
-                    Url = fileName
-                });
-            }
+
+                    //var fileName = await _azureService.UploadImageAsync(new ImageUpload() { Base64Image = image });
+                    var fileName = _localPhotoService.Save(new ImageUpload() { Base64Image = image });
+                    imgs.Add(new ProductImage()
+                    {
+                        Url = fileName
+                    });
+                }
 
             var entity = new Product
             {
+                Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
-                StoreId = Guid.Parse("DF9D2F10-315E-4429-8EE4-1A15A8B9129B"), //TODO tirar loja fixa
+                StoreId = request.StoreId,
                 Categories = request.Categories,
                 Tags = request.Tags,
                 Price = request.Price,
@@ -50,9 +54,11 @@ namespace Agatha.Application.Products.Commands.CreateProduct
                 Created = DateTime.Now
 
             };
-
-            _context.Products.Add(entity);
-
+            
+            if (entity.Id != null)
+                _context.Products.Update(entity);
+            else
+                _context.Products.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
 
             return entity.Id;

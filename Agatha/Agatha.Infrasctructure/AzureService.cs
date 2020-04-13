@@ -12,7 +12,7 @@ namespace Agatha.Infrasctructure
 {
     public class AzureService : IAzureService
     {
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         public AzureService(IConfiguration configuration)
         {

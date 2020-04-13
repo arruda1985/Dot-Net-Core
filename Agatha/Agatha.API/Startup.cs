@@ -11,15 +11,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using NSwag.AspNetCore;
 using Agatha.WebUI.Filters;
 using Agatha.Application.Products.Queries.GetProduct;
 using Agatha.Application.Customers.Queries.GetAllCustomers;
-using FluentValidation.AspNetCore;
 using Agatha.Application.Interfaces;
 using Agatha.Infrasctructure;
 using Newtonsoft.Json;
-
+using Microsoft.OpenApi.Models;
 namespace API
 {
     public class Startup
@@ -41,7 +39,7 @@ namespace API
 
             // Add framework services.
             services.AddTransient<IAzureService, AzureService>();
-
+            services.AddTransient<ILocalPhotoFileService, LocalPhotoFileService>();
 
             services.AddTransient<IDischargeService, MundiPaggService>();
 
@@ -73,6 +71,22 @@ namespace API
             });
 
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
+            services.AddSwaggerGen(c => {
+
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Agatha API",
+                        Version = "v1",
+                        Description = "s",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Daniel Arruda"
+                          
+                        }
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -94,15 +108,14 @@ namespace API
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseSwaggerUi3(settings =>
-            {
-                settings.Path = "/api";
-                settings.DocumentPath = "/api/specification.json";
-            });
-
             app.UseCors(
-                options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
-            );
+        options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
+    );
+            // Ativando middlewares para uso do Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Indicadores Econômicos V1");
+            });
 
             app.UseMvc(routes =>
             {
@@ -111,18 +124,6 @@ namespace API
                     template: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-                }
-            });
         }
     }
 }

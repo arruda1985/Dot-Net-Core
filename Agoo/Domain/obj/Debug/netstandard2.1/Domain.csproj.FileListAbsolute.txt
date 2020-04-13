@@ -1,0 +1,8 @@
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Domain\bin\Debug\netstandard2.1\Domain.deps.json
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Domain\bin\Debug\netstandard2.1\Domain.dll
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Domain\bin\Debug\netstandard2.1\Domain.pdb
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Domain\obj\Debug\netstandard2.1\Domain.csproj.CoreCompileInputs.cache
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Domain\obj\Debug\netstandard2.1\Domain.AssemblyInfoInputs.cache
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Domain\obj\Debug\netstandard2.1\Domain.AssemblyInfo.cs
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Domain\obj\Debug\netstandard2.1\Domain.dll
+D:\Projects\Arruda\Dot-Net-Core\Agoo\Domain\obj\Debug\netstandard2.1\Domain.pdb
